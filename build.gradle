@@ -1,0 +1,27 @@
+plugins {
+  id("java")
+  id('info.solidsoft.pitest').version("$piTestPluginVersion")
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testImplementation(platform("org.junit:junit-bom:${junitVersion}"))
+  testImplementation("org.junit.jupiter:junit-jupiter-api")
+  testImplementation("org.assertj:assertj-core:3.24.2")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+}
+
+tasks.withType(Test).configureEach {
+  useJUnitPlatform()
+}
+
+pitest {
+  timestampedReports.set(false)
+  junit5PluginVersion.set("${piTestJUnitVersion}")
+  pitestVersion.set("${piTestVersion}")
+  mutators.set(["ALL"])
+  targetClasses.set(["com.foo.*"])
+}
