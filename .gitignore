@@ -1,0 +1,14 @@
+/.gradle/
+build/
+
+.classpath
+.project
+.settings/
+/.vscode/
+bin/
+
+/*.iml
+/*.ipr
+/*.iws
+/.idea/
+out/
