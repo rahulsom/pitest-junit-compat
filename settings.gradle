@@ -1,3 +1,21 @@
+pluginManagement {
+    plugins {
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'info.solidsoft.pitest') {
+                useModule "info.solidsoft.gradle.pitest:gradle-pitest-plugin:${requested.version}"
+            }
+        }
+    }
+    repositories {
+        gradlePluginPortal()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+    }
+}
+
 plugins {
   id("com.gradle.enterprise").version("3.14.1")
 }
